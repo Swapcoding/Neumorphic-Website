@@ -1,0 +1,112 @@
+:root {
+    --primary-light: #8abdff;
+    --primary: #6d5dfc;
+    --primary-dark: #5b0eeb;
+    
+    --white: #FFFFFF;
+    --greyLight-1: #E4EBF5;
+    --greyLight-2: #c8d0e7;
+    --greyLight-3: #bec8e4;
+    --greyDark: #9baacf;
+  }
+  
+  $shadow: .3rem .3rem .6rem var(--greyLight-2), 
+  -.2rem -.2rem .5rem var(--white);
+  $inner-shadow: inset .2rem .2rem .5rem var(--greyLight-2), 
+  inset -.2rem -.2rem .5rem var(--white);
+  
+  *, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  
+  html {
+    box-sizing: border-box;
+    font-size: 62.5%; // 1rem = 10px    100% = 16px
+    overflow-y: scroll;
+    background: var(--greyLight-1);
+    
+    @media screen and (min-width: 900px) {
+          font-size: 75%; }
+  }
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .components {
+    // width: 75rem;
+    // height: 40rem;
+    // border-radius: 10rem;
+    // box-shadow:.8rem .8rem 1.4rem var(--greyLight-2), 
+    //           -.2rem -.2rem 1.8rem var(--white);
+    padding: 1rem;
+    // display: grid;
+    // grid-template-columns: 17.6rem 19rem 20.4rem;
+    // grid-template-rows: repeat(autofit, min-content);
+    // grid-column-gap: 5rem;
+    // grid-row-gap: 2.5rem;
+    // align-items: center;
+   }
+  
+
+  /*  SEGMENTED-CONTROL */
+.segmented-control {
+    // grid-column: 2 / 3;
+    // grid-row: 1 / 2;
+    width: 21.8rem;
+    height: 4rem;
+    box-shadow: $shadow;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+  
+    input { display: none; }
+  
+    > input:checked + label {
+      transition: all .5s ease;
+      color: var(--primary);
+      }
+  
+    &__1, &__2, &__3 {
+      width: 6.8rem;
+      height: 3.6rem;
+      font-size: 1.4rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: var(--greyDark);
+      transition: all .5s ease;
+  
+      &:hover { color: var(--primary); }
+    }
+  
+    &__color {
+      position: absolute;
+      height: 3.4rem;
+      width: 6.9rem;
+      margin-left: .3rem;
+      border-radius: 1rem;
+      box-shadow: $inner-shadow;
+      pointer-events: none;
+    }
+  }
+  
+  #tab-1:checked ~ .segmented-control__color {
+    transform: translateX(0);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  #tab-2:checked ~ .segmented-control__color {
+    transform: translateX(6.8rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  #tab-3:checked ~ .segmented-control__color {
+    transform: translateX(13.6rem);
+    transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
